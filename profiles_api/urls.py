@@ -16,8 +16,10 @@ from rest_framework.routers import DefaultRouter
 from profiles_api import views
 
 router = DefaultRouter()
-router.register('profile',views.UserProfileView)
+router.register('profile',views.UserProfileViewset)
+router.register('blog',views.UserBlogpostViewset)
 
 urlpatterns = [
+    path('login/', views.UserLoginApiView.as_view()),
     path('', include(router.urls))
 ]

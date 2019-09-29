@@ -1,7 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
+from django.conf import settings
 
-# Create your models here.
+
+"""
+    by default all models have manager class i.e. YOURMODEL.objects is defailt manager for all model
+"""
 
 class ProfileUserManager(UserManager):
     """ Profile manager Model """
@@ -46,3 +50,27 @@ class ProfileUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+"""
+    null=True sets NULL (versus NOT NULL) on the column in your DB. Blank values for Django field types 
+    such as DateTimeField or ForeignKey will be stored as NULL in the DB.
+
+    blank=True determines whether the field will be required in forms. This includes the 
+    admin and your own custom forms. If blank=True then the field will not be required, whereas 
+    if it's False the field cannot be blank.
+    The combo of the two is so frequent because typically if you're going to allow a field 
+    to be blank in your form, you're going to also need your database to allow NULL values
+    for that field. The exception is CharFields and TextFields, which in Django are never 
+    saved as NULL. Blank values are stored in the DB as an empty string ('').
+"""
+
+"""
+        As currently implemented, setting auto_now or auto_now_add to True will cause the field to have 
+        editable=False and blank=True set.
+"""
+class UserBlogpostModel(models.Model):
+    """Model for user saving user Blogpost """
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=256, blank=False, null=False)
+    content = models.CharField(max_length=10000, blank=False, null=False)

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import ProfileUser
+from profiles_api import models
 
 # Register your models here.
-admin.site.register(ProfileUser)
+admin.site.register(models.ProfileUser)
+admin.site.register(models.UserBlogpostModel)

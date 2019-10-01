@@ -23,7 +23,7 @@ class ProfileUserSerilizer(serializers.ModelSerializer):
         """ OverWriting default 'create' to use create_user to create a new user
             and save hashed password and return a new Profile User """
 
-        user = ProfileUser.objects.create_user(
+        user = models.ProfileUser.objects.create_user(
             email=validated_data['email'],
             first_name=validated_data['first_name'],
             password=validated_data['password']

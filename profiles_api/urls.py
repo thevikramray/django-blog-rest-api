@@ -6,7 +6,7 @@
             "  BASE NAME TO IDENTIFY AS WE DONT GIVE QUERYSET IN VIEWSET  "
 
     3-->viewsets.ModelViewset -- routes.register('ModelViewset', views.HelloModelViewset)
-            "   NO BASE NAME REQUIRED AS IT WILL BE AUTOMATICALLY GENERATED or you can overwrite "
+            "   NO BASE NAME REQUIRED AS IT WILL BE AUTOMATICALLY GENERATED with the queryset or MODEL or you can overwrite "
 
 """
 

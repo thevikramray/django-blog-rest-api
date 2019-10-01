@@ -2,12 +2,15 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 
 """
     ObtainAuthToken.renderer_classes = (renderers.JSONRenderer,) --> 
         rest_framework.renderers
         Renderers are used to serialize a response into specific media types.
-        They give us a generic way of being able to handle various media types on the response, such as JSON encoded data or HTML output.
+        They give us a generic way of being able to handle various media types on the 
+        response, such as JSON encoded data or HTML output.
         REST framework also provides an HTML renderer that renders the browsable API.
 """
 
@@ -16,13 +19,14 @@ from rest_framework.authtoken.views import ObtainAuthToken
     A settings object, that allows API settings to be accessed as properties. For example:
         from rest_framework.settings import api_settings  
         print(api_settings.DEFAULT_RENDERER_CLASSES)  
-    Any setting with string import paths will be automatically resolved and return the class, rather than the string literal.
+    Any setting with string import paths will be automatically resolved and 
+    return the class, rather than the string literal.
 
 """
 from rest_framework.settings import api_settings
 
 from profiles_api import models, serializers
-from profiles_api.permissions import UpdateOwnProfile
+from profiles_api.permissions import UpdateOwnProfile, UpdateOrDeletePost
 
 """
     rest_framework.views.ApiView we have to define (get, post, put, patch, delete)
@@ -73,4 +77,19 @@ class UserBlogpostViewset(viewsets.ModelViewSet):
     serializer_class = serializers.BlogpostSerilizer
     queryset = models.UserBlogpostModel.objects.all()
     authentication_classes = (TokenAuthentication,)
-    
+    permission_classes = (IsAuthenticatedOrReadOnly,UpdateOrDeletePost,)
+    """
+        perform_create is called within the create method to call the serializer for 
+        creation once it's known the serialization is valid. Specifically, serializer.save()
+
+
+        if you want to restrict this ApiEndpoint then just import and 
+        Add 'IsAuthenticated' in place of 'IsAuthenticatedOrReadOnly' above
+    """
+    filter_backends = (filters.SearchFilter,)    # The URL query parameter used for the search.
+    search_fields = ('title', 'content',)
+
+
+    def perform_create(self, serializer):
+        """Overwrite default perform_create to add a filed created by"""
+        serializer.save(created_by = self.request.user)

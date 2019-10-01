@@ -28,7 +28,7 @@
 
    http://localhost:8000/admin for Django admin and login from the credentials from step 7.
 
-   # follow this link to get yourself authenticated 
+   follow this link to get yourself authenticated using django token and Mod Header 
    https://stackoverflow.com/questions/39320657/how-do-i-set-up-token-authentication-properly-with-django-rest-framework
 
 if you face any difficulties , follow this-

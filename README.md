@@ -1,7 +1,7 @@
 # STEPS TO USE THIS PROFILE REST API IN LOCALSERVER-
 
 👉 1--> INSTALL MINICONDA https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html
-
+ (next steps are commands that you need to enter in your terminal)
 👉 2-->conda create -n test_env python=3.5.4
         (this will create a virtual env with python 3.5.4 without any packages) ##
 
@@ -20,16 +20,16 @@
 👉 8-->python manage.py runserver
 
 👉 9-->head over to 
-    http://localhost:8000/api/ for api root.
+   http://localhost:8000/api/ for api root.
 
-    http://localhost:8000/api/profile/  for creating user , then 
+   http://localhost:8000/api/profile/  for creating user , then 
 
-    http://localhost:8000/api/login for generating Token for MOD HEADER . #
+   http://localhost:8000/api/login for generating Token for MOD HEADER . #
 
-    http://localhost:8000/admin for Django admin and login from the credentials from step 7.
+   http://localhost:8000/admin for Django admin and login from the credentials from step 7.
 
-    # follow this link to get yourself authenticated 
-       https://stackoverflow.com/questions/39320657/how-do-i-set-up-token-authentication-properly-with-django-rest-framework
+   # follow this link to get yourself authenticated 
+   https://stackoverflow.com/questions/39320657/how-do-i-set-up-token-authentication-properly-with-django-rest-framework
 
 if you face any difficulties , follow this-
 👉    https://coderwall.com/p/aykl2w/setup-an-existing-django-project

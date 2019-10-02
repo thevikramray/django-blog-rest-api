@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+environ.Env.read_env('.env') 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,8 +28,10 @@ SECRET_KEY = '*nu(mvx7#sh4!85pzz4%05$ybv%4hmk4kghaaw!&yr8-a7cd!l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if os.environ.get('DEBUG'):
+    DEBUG = os.environ.get('DEBUG')
 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.environ.get('MY_DOMAIN')]
 
 # Application definition
 
@@ -124,3 +129,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.ProfileUser'
+
+STATIC_ROOT = 'static/'
+
+
+#https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django

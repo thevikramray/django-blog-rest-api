@@ -134,3 +134,7 @@ STATIC_ROOT = 'static/'
 
 
 #https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django
+
+MEDIA_URL = '/media/'
+STATICFILES_DIRS = [ BASE_DIR+'/assets',]
+MEDIA_ROOT = 'media/'

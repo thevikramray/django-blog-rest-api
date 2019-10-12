@@ -83,10 +83,23 @@ WSGI_APPLICATION = 'profiles_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# Uncomment below lines for sqlite support and comment the mysql block
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DB_NAME'),
+        'USER': os.environ.get('MYSQL_DB_USER'),
+        'PASSWORD':os.environ.get('MYSQL_DB_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_DB_HOST'),
+        'PORT': os.environ.get('MYSQL_DB_PORT'),
     }
 }
 

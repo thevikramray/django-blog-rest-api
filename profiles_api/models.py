@@ -65,7 +65,7 @@ class ProfileUser(AbstractBaseUser, PermissionsMixin):
 """
 
 """
-        As currently implemented, setting auto_now or auto_now_add to True will cause the field to have 
+        As currently implemented, setting auto_now(update everytime if the obj is edited, means it will also be created when the obj i also created or auto_now_add(will be only be created at start) to True will cause the field to have 
         editable=False and blank=True set.
 """
 class UserBlogpostModel(models.Model):

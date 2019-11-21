@@ -1,4 +1,4 @@
 certifi==2018.8.24
-django==2.1
+django==2.1.11
 djangorestframework==3.10.3
 django-environ==0.4.5

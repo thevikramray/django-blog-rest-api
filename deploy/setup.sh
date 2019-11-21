@@ -2,7 +2,7 @@
 
 set -e
 
-# TODO: Set to URL of git repo.
+# TODO: Set to URL of git repo. 
 PROJECT_GIT_URL='https://github.com/vikramray1/django-blog-rest-api.git'
 
 PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'

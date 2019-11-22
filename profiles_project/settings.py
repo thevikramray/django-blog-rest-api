@@ -28,7 +28,7 @@ SECRET_KEY = '*nu(mvx7#sh4!85pzz4%05$ybv%4hmk4kghaaw!&yr8-a7cd!l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG',1)))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.environ.get('MY_DOMAIN'), os.environ.get('MY_DOMAIN2'),'http://ec2-13-235-90-8.ap-south-1.compute.amazonaws.com/'] 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.environ.get('MY_DOMAIN'), os.environ.get('MY_DOMAIN2'),'ec2-13-235-90-8.ap-south-1.compute.amazonaws.com'] 
 
 # Application definition
 

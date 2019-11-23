@@ -124,12 +124,12 @@ AUTH_USER_MODEL = 'profiles_api.ProfileUser'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/djangostatic/'
 MEDIA_URL = '/media/'
 STATICFILES_DIRS = [ BASE_DIR+'/assets',]
 
 
-STATIC_ROOT = os.environ.get('STATIC_ROOT') or 'static/'
+STATIC_ROOT = os.environ.get('STATIC_ROOT') or 'djangostatic/'
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT')  or 'media/'
 
 #https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django
